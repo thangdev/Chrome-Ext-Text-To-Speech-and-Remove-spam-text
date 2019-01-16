@@ -66,3 +66,7 @@ function sendMessage() {
     });
 
 }
+
+$("#speak").hover(function (e) {
+    $(this).css("background-color", e.type === "mouseenter" ? "#98baf2" : "transparent")
+})
