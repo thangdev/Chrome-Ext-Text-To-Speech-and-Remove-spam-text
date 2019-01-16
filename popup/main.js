@@ -20,6 +20,8 @@ function loadVoices() {
         // Add the option to the voice selector.
         voiceSelect.appendChild(option);
     });
+    document.getElementById("voice").value = "Google UK English Female"
+
 }
 
 loadVoices();
