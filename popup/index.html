@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../skeleton.css">
+    <title>Document</title>
+    <style>
+        h1{
+            text-align: center
+        }
+    </style>
+</head>
+
+<body>
+    <div id="page-wrapper">
+        <h1>Pronunciation</h1>
+        <p id="msg"></p>
+        <input type="text" name="speech-msg" id="speech-msg" x-webkit-speech placeholder="Enter word or text here...">
+        <button id="speak">Listen</button>
+        <div class="option">
+            <label for="voice">Choose voice</label>
+            <select name="voice" id="voice"></select>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>

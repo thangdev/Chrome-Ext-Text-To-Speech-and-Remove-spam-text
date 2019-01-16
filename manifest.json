@@ -1,0 +1,27 @@
+{
+    "manifest_version": 2,
+
+    "name": "Text to Speech",
+    "description": "Highlight a word or text on a webpage then click the extension's icon to listen English voice",
+    "author": "Thangnv/Danptit",
+    "version": "1.0",
+    "icons": {
+        "50": "icon.png"
+    },
+    "background": {
+        "scripts": ["background.js"]
+    },
+    "content_scripts": [{
+        "matches": ["http://*/*", "https://*/*"],
+        "js": ["jquery.js", "content.js"],
+        "run_at": "document_end"
+    }],
+    "browser_action": {
+        "default_icon": "icon.png",
+        "default_popup": "./popup/index.html"
+    },
+    "permissions": [
+        "activeTab",
+        "clipboardRead"
+    ]
+}
