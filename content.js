@@ -14,38 +14,35 @@ chrome.runtime.onMessage.addListener(function(req, sender, sendResponse) {
           /Cực kì thuyết phục/g,
           " spamed"
         );
-        alert("Removed spam text!");
-
-      } else if (/cực kì thuyết phục/.test(x)) {
+      }
+      if (/cực kì thuyết phục/.test(x)) {
         document.body.innerHTML = document.body.innerHTML.replace(
           /cực kì thuyết phục/g,
           " spamed"
         );
-        alert("Removed spam text!");
-
-      } else if (/Cực kỳ thuyết phục/.test(x)) {
+      }
+      if (/Cực kỳ thuyết phục/.test(x)) {
         document.body.innerHTML = document.body.innerHTML.replace(
           /Cực kỳ thuyết phục/g,
           " spamed"
         );
-        alert("Removed spam text!");
-
-      } else if (/cực kỳ thuyết phục/.test(x)) {
+      }
+      if (/cực kỳ thuyết phục/.test(x)) {
         document.body.innerHTML = document.body.innerHTML.replace(
           /cực kỳ thuyết phục/g,
           "spamed"
         );
+
         alert("Removed spam text!");
       }
-      else alert("Ko tìm thấy cụm từ CKTP!");
+       else alert("Ko tìm thấy cụm từ CKTP!");
     } else if (req.text) {
       document.body.innerHTML = document.body.innerHTML.replace(
         new RegExp(`${req.text}`, "g"),
         " spamed"
       );
       alert("Removed " + req.text);
-
-    } 
+    }
     sendResponse({
       data: "removed"
     });
