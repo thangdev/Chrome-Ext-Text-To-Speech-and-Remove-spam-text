@@ -1,3 +1,10 @@
+
+
+## *New update*
+
+- Add remove text feature
+    - Type the spam text into the input and click Remove button. It will replace all spam text to "spamed"
+    - If you just want to remove "Cực kỳ thuyết phục". Leave the input blank and just click Remove button
 # TextToSpeech_ChromeExtension
 Highlight a word or text on a webpage then click the extension's icon to listen English voice
 1. Open Chrome.
