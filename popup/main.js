@@ -2,6 +2,7 @@ var supportMsg = document.getElementById('msg');
 
 // Get the 'speak' button
 var button = document.getElementById('speak');
+const btnRemove = document.getElementById('remove')
 // Get the text input element.
 var speechMsgInput = document.getElementById('speech-msg');
 // Get the voice select element.
@@ -44,13 +45,50 @@ function speak(text) {
 
 // Set up an event listener for when the 'speak' button is clicked.
 button.addEventListener('click', function (e) {
+
     if (speechMsgInput.value.length > 0) {
         speak(speechMsgInput.value);
     }
     text = window.getSelection().toString();
     console.log(text)
 });
-sendMessage();
+
+btnRemove.addEventListener('click', (e) => {
+    sendMessageRemove();
+
+})
+
+    sendMessage();
+
+
+
+function sendMessageRemove() {
+    let text = speechMsgInput.value
+    let data = null;
+    if(text) data = text
+    else data = "none"
+    console.log("message sent!")
+  chrome.tabs.query(
+    {
+      active: true,
+      currentWindow: true
+    },
+    function(tabs) {
+      chrome.tabs.sendMessage(
+        tabs[0].id,
+        {
+          action: "remove",
+          text: data
+        },
+        function(response) {
+          console.log("response ::", response);
+        //   speechMsgInput.value = response.data;
+          console.log(response.data);
+        }
+      );
+    }
+  );
+}
 
 function sendMessage() {
     chrome.tabs.query({
@@ -60,6 +98,7 @@ function sendMessage() {
         chrome.tabs.sendMessage(tabs[0].id, {
             action: "textToSpeech"
         }, function (response) {
+            console.log("response ::", response)
             speechMsgInput.value = response.data;
             console.log(response.data)
         });
