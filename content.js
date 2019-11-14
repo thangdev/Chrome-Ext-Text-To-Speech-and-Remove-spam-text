@@ -43,6 +43,8 @@ chrome.runtime.onMessage.addListener(function(req, sender, sendResponse) {
         new RegExp(`${req.text}`, "g"),
         " spamed"
       );
+      alert("Removed " + req.text);
+
     } 
     sendResponse({
       data: "removed"
