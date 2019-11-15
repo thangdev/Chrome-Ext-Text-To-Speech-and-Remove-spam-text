@@ -7,42 +7,28 @@ chrome.runtime.onMessage.addListener(function(req, sender, sendResponse) {
     });
   } else if (req.action === "remove") {
     console.log("req::", req);
+    let commentList = document.getElementsByClassName("_3l3x");
+    commentList = [...commentList];
+    let check = false;
     if (req.text == "none") {
-      x = document.body.innerHTML;
-      if (/Cực kì thuyết phục/.test(x)) {
-        document.body.innerHTML = document.body.innerHTML.replace(
-          /Cực kì thuyết phục/g,
-          " spamed"
-        );
-      }
-      if (/cực kì thuyết phục/.test(x)) {
-        document.body.innerHTML = document.body.innerHTML.replace(
-          /cực kì thuyết phục/g,
-          " spamed"
-        );
-      }
-      if (/Cực kỳ thuyết phục/.test(x)) {
-        document.body.innerHTML = document.body.innerHTML.replace(
-          /Cực kỳ thuyết phục/g,
-          " spamed"
-        );
-      }
-      if (/cực kỳ thuyết phục/.test(x)) {
-        document.body.innerHTML = document.body.innerHTML.replace(
-          /cực kỳ thuyết phục/g,
-          "spamed"
-        );
-
-        alert("Removed spam text!");
-      }
-       else alert("Ko tìm thấy cụm từ CKTP!");
+      commentList.map(cmt => {
+        text = cmt.innerText.toLowerCase();
+        if (/c(.*) k(.*) th(.*)/gm.test(text)) {
+          cmt.innerHTML = "spamed";
+          check = true;
+        }
+      });
+      if (check) alert("Removed spam text!");
     } else if (req.text) {
-      document.body.innerHTML = document.body.innerHTML.replace(
-        new RegExp(`${req.text}`, "g"),
-        " spamed"
-      );
-      alert("Removed " + req.text);
-    }
+      commentList.map(cmt => {
+        text = cmt.innerText.toLowerCase();
+        if (new RegExp(`${req.text}`, "g").test(text)) {
+          cmt.innerHTML = "spamed";
+          check = true;
+        }
+      });
+      if (check) alert("Removed " + req.text);
+    } else alert("Ko tìm thấy cụm từ CKTP!");
     sendResponse({
       data: "removed"
     });
