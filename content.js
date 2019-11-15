@@ -19,6 +19,8 @@ chrome.runtime.onMessage.addListener(function(req, sender, sendResponse) {
         }
       });
       if (check) alert("Removed spam text!");
+      else alert("Ko tìm thấy cụm từ CKTP!");
+
     } else if (req.text) {
       commentList.map(cmt => {
         text = cmt.innerText.toLowerCase();
@@ -28,7 +30,9 @@ chrome.runtime.onMessage.addListener(function(req, sender, sendResponse) {
         }
       });
       if (check) alert("Removed " + req.text);
-    } else alert("Ko tìm thấy cụm từ CKTP!");
+      else alert("Ko tìm thấy comment chứa cụm từ " + req.text);
+      
+    } 
     sendResponse({
       data: "removed"
     });
