@@ -7,7 +7,9 @@
     - If you just want to remove "Cực kỳ thuyết phục". Leave the input blank and just click Remove button
 # TextToSpeech_ChromeExtension
 Highlight a word or text on a webpage then click the extension's icon to listen English voice
-How to use:
+
+### How to use:
+
 0. Clone this repo or download and extract it
 1. Open Chrome.
 2. Click the menu button =>  More tools =>  click Extensions. The Extensions screen appears.
