@@ -97,8 +97,11 @@ function sendMessage() {
             action: "textToSpeech"
         }, function (response) {
             console.log("response ::", response)
-            speechMsgInput.value = response.data;
-            console.log(response.data)
+            if(response.data){
+                 speechMsgInput.value = response.data;
+                 console.log(response.data);
+            }
+           
         });
     });
 
