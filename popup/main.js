@@ -60,8 +60,6 @@ btnRemove.addEventListener('click', (e) => {
 
     sendMessage();
 
-
-
 function sendMessageRemove() {
     let text = speechMsgInput.value
     let data = null;
